@@ -1,0 +1,21 @@
+{
+    "name": "Devcontainer",
+    // "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+    "dockerComposeFile": "compose.yml",
+    "service": "devcontainer",
+    "workspaceFolder": "/workspace",
+    // nodeのインストール設定
+    "features": {
+        "ghcr.io/devcontainers/features/node:1": {
+            "nodeVersion": "22.5.1"
+        },
+        "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+    },
+    // 起動時の実行コマンド
+    // 今回はnodejsのパッケージをインストール
+    "postCreateCommand": "npm install",
+    // ホスト側のファイルをコンテナにマウントする
+    "mounts": [
+        "source=/Users/yokotatomo/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached"
+    ]
+}
